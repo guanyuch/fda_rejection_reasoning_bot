@@ -40,11 +40,14 @@ FDA CRL PDFs (zip)
 
 ### 1. Get the FDA Data
 
-Download the FDA Complete Response Letters:
-- **Approved CRLs**: https://download.open.fda.gov/approved_CRLs.zip
-- **Unapproved CRLs**: https://download.open.fda.gov/unapproved_CRLs.zip
+Download the FDA Complete Response Letters and upload to a Unity Catalog Volume:
 
-Place the zip file in `data/raw/` and upload it to a Unity Catalog Volume in your Databricks workspace.
+1. Download: https://download.open.fda.gov/approved_CRLs.zip
+2. Upload to your Databricks Volume:
+```bash
+databricks fs cp ApprovedCRLs_NDA_BLA_2020-2024.zip dbfs:/Volumes/<catalog>/<schema>/<volume>/ApprovedCRLs_NDA_BLA_2020-2024.zip
+```
+Or upload via the Databricks UI: **Catalog → your volume → Upload**
 
 ### 2. Run Notebook 01 — PDF Preparation
 
