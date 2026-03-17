@@ -1,0 +1,6 @@
+data/raw/*.zip
+data/raw/ApprovedCRLs_NDA_BLA_2020-2024/
+*.pyc
+__pycache__/
+.DS_Store
+.ipynb_checkpoints/

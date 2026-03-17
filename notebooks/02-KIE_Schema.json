@@ -1,0 +1,312 @@
+{
+  "type": "object",
+  "properties": {
+    "application_number": {
+      "description": "The unique identifier assigned by the FDA to the drug application, including the application type, number, and submission information.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "application_type": {
+      "description": "The regulatory classification of the application submitted to the FDA (e.g., NDA, BLA).",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "applicant": {
+      "description": "The legal name of the company or entity submitting the application.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "regulatory_context": {
+      "description": "The legal framework or statutory provision under which the application is submitted to the FDA.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "fda_letter_author": {
+      "description": "Information describing the FDA representative writing or signing the letter.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "fda_letter_author_title": {
+              "description": "The title of the FDA member signing or writing the letter. Do not include their division.",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "fda_letter_author_full_role": {
+              "description": "The full title of the FDA member signing or writing the letter, including their division. ",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "fda_letter_author_title",
+            "fda_letter_author_full_role"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "drug_product": {
+      "description": "Information about the pharmaceutical product under review.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The name of the drug product."
+            },
+            "dosage_form": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The pharmaceutical form in which the drug is administered."
+            },
+            "strengths": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "A list of all dosage strengths of the drug product included in the application."
+            },
+            "new_indication": {
+              "description": "The new indication of drug product in sNDA submissions",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "dosage_form",
+            "strengths",
+            "new_indication"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "prescribing_information_instructions": {
+      "description": "Guidance on how to revise and resubmit prescribing information, including SPL format, SRPI checklist, and content requirements.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "carton_container_labeling_instructions": {
+      "description": "Details about requirements or reservations on carton/container labeling and instructions for revision or resubmission.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "safety_update_instructions": {
+      "description": "Detailed requirements for submitting updated safety information with the application response.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resubmission_instructions": {
+      "description": "FDA's requirements and timeline for resubmitting the application after addressing deficiencies.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "FDA_Codes_Regulations": {
+              "description": "FDA's codes or regulations cited in resubmission section.",
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required_actions": {
+              "description": "extract all specific actions the FDA requires for a successful resubmission",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "FDA_Codes_Regulations",
+            "required_actions"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "primary_deficiency_category": {
+      "description": "Based on the approvability issues listed, determine the single most significant category of failure. Choose from: 'manufacturing_facility', 'drug_product_quality', 'human_factors', 'device_performance', 'labeling_prescribing_info', 'labeling_carton_container', 'clinical_data_insufficient', 'safety_update_required', 'regulatory_exclusivity_block', 'proprietary_name', 'unaddressed_info_requests', 'postmarketing_commitments', or 'other'.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "deficiency_summary_paragraphs": {
+      "description": "One paragraph that summarize the main approvability deficiencies, using wording close to the original letter. Summarize only sections that prevent approval. Exclude non-approvability comments, guidance suggestions, or optional recommendations.",
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "NDA_ID": {
+      "type": "string",
+      "description": "The NDA application number beginning with \"NDA\""
+    },
+    "FDA_Rejection_Citing": {
+      "description": "The citation provided by the FDA as reason for rejection. List multiple if needed. ",
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "date_original_submission": {
+      "description": "The date of the original FDA submission which this letter is replying to.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "date_letter_reply": {
+      "description": "The date this letter was sent to the submitting parting ",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "application_number",
+    "application_type",
+    "regulatory_context",
+    "drug_product",
+    "prescribing_information_instructions",
+    "carton_container_labeling_instructions",
+    "safety_update_instructions",
+    "primary_deficiency_category",
+    "deficiency_summary_paragraphs",
+    "NDA_ID",
+    "applicant",
+    "FDA_Rejection_Citing",
+    "fda_letter_author",
+    "date_original_submission",
+    "date_letter_reply",
+    "resubmission_instructions"
+  ]
+}
